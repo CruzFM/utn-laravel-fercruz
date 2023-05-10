@@ -41,4 +41,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //This will enable a relation between the user tables and the transactions table.
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }
