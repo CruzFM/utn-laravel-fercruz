@@ -30,7 +30,6 @@ class HomeController extends Controller
         $total_spending = $transactions->where('transaction_type', 'spending')->sum('amount');
         $balance = $total_income - $total_spending;
 
-
-        return view('home', compact('transactions', 'balance'));
+        return view('home', compact('transactions', 'balance', 'total_income', 'total_spending'));
     }
 }

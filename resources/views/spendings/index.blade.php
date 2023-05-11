@@ -5,23 +5,23 @@
         <h1>Spendings</h1>
         <table>
             <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Amount</th>
-                    <th>Description</th>
+                <tr class="p-3">
+                    <th class="p-2">Date</th>
+                    <th class="p-2">Amount</th>
+                    <th class="p-2">Description</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($spendings as $spending)
-                    <tr>
-                        <td>{{ $spending->created_at->format('d-m-Y') }}</td>
-                        <td>{{ $spending->amount }}</td>
-                        <td>{{ $spending->description }}</td>
-                        <td>
+                    <tr class="border border-danger p-3">
+                        <td class="border border-danger p-2">{{ $spending->created_at->format('d-m-Y') }}</td>
+                        <td class="border border-danger p-2">{{ $spending->amount }}</td>
+                        <td class="border border-danger p-2">{{ $spending->description }}</td>
+                        <td class="p-2">
                             <form action="{{ route('transactions.destroy', $spending->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit">Delete</button>
+                            <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
                         </td>
                     </tr>
