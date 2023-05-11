@@ -72,8 +72,26 @@ class TransactionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
         //
+        $income = Transactions::findOrFail($id);
+        $income->delete();
+
+        return redirect()->route('incomes.index')->with('successs', 'Income delete successfully!');
+    }
+
+    public function incomes()
+    {
+        $user_id = auth()->user()->id;
+        $incomes = Transactions::where('user_id', $user_id)->where('transaction_type', 'income')->get();
+        return view('incomes.index', compact('incomes'));
+    }
+
+    public function spendings()
+    {
+        $user_id = auth()->user()->id;
+        $spendings = Transactions::where('user_id', $user_id)->where('transaction_type', 'spending')->get();
+        return view('spendings.index', compact('spendings'));
     }
 }

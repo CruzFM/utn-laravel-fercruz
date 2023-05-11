@@ -45,7 +45,8 @@
                         <button type="submit">Add Transaction</button>
                     </form>
                 </div>
-
+                <a href="{{ route('incomes.index') }}">Incomes</a>
+                <a href="{{ route('spendings.index') }}">Spendings</a>
             </div>
         </div>
     </div>
